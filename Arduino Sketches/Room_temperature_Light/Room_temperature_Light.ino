@@ -27,12 +27,12 @@
 
 //TEMPERATURE LIMITSokl
 //Normal range
-#define normLoTemp 19
-#define normHiTemp 21
+#define normLoTemp 22.0
+#define normHiTemp 23.0
 //Lower than this is full cold
-#define coldTemp 16
+#define coldTemp 18.0
 //Higher than this is full Warm
-#define warmTemp 24
+#define warmTemp 26.0
 
 //set the max PWM for each LED
 #define RMax 255
@@ -124,8 +124,7 @@ float getTemp(OneWire temp){
   temp.write(0x44, 1);
 
   //wait for the conversion to take place
-  delay(770);
-  +
+  delay(770); 
   present = temp.reset();
   temp.skip();
   temp.write(0xBE);
@@ -136,33 +135,3 @@ float getTemp(OneWire temp){
   rawTemp = ((data[1]<<8) | data[0]);
   return (float)rawTemp/16;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
